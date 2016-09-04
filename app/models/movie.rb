@@ -1,5 +1,3 @@
-require 'elasticsearch/model'
-
 class Movie < ApplicationRecord
   include Searchable
 
