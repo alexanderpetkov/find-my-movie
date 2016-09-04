@@ -5,6 +5,9 @@ class Movie < ApplicationRecord
 
   belongs_to :director, optional: true
 
-  has_and_belongs_to_many :actors
-  has_and_belongs_to_many :genres
+  has_many :actors, through: :movie_starrings
+  has_many :movie_starrings
+
+  has_many :genres, through: :genre_belongings
+  has_many :genre_belongings
 end

@@ -1,5 +1,6 @@
 class Genre < ApplicationRecord
   include Searchable
 
-  has_and_belongs_to_many :movies
+  has_many :movies, through: :genre_belongings
+  has_many :genre_belongings
 end

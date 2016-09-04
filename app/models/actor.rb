@@ -3,5 +3,6 @@ class Actor < ApplicationRecord
 
   enum gender: [:female, :male]
 
-  has_and_belongs_to_many :movies
+  has_many :movies, through: :movie_starrings
+  has_many :movie_starrings
 end
