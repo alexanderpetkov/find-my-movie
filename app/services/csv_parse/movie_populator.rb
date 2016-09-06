@@ -2,26 +2,29 @@ require 'csv'
 
 module CSVParse
   class MoviePopulator
-    MOVIES_PATH = 'datasets/movies.csv'
-    CSV_OPTS = { encoding: 'iso-8859-1:utf-8', col_sep: ';' }
+    MOVIES_PATH = 'datasets/movies.csv'.freeze
+    CSV_OPTS = { encoding: 'iso-8859-1:utf-8', col_sep: ';' }.freeze
 
     def parse
       CSV.foreach(MOVIES_PATH, CSV_OPTS) do |row|
         next if $INPUT_LINE_NUMBER < 3
-        puts "Parsing row ##{$INPUT_LINE_NUMBER}"
+        Rails.logger "Parsing row ##{$INPUT_LINE_NUMBER}"
 
         @row = row
 
-
         movie = Movie.find_or_create_by(title: title, year: year)
-        movie.update(length: length, director: director, award_winning: award?)
-
-        movie.actors << actors
-        movie.genres << genre
+        fill(movie)
       end
     end
 
     private
+
+    def fill(movie)
+      movie.update(length: length, director: director, award_winning: award?)
+
+      movie.actors << actors
+      movie.genres << genre
+    end
 
     def title
       parse_name(@row[2])
@@ -36,7 +39,7 @@ module CSVParse
     end
 
     def director
-      director = Director.find_or_create_by(name: parse_name(@row[6]))
+      Director.find_or_create_by(name: parse_name(@row[6]))
     end
 
     def length
@@ -44,7 +47,7 @@ module CSVParse
     end
 
     def award?
-      @row[9].to_s.downcase == 'yes'
+      @row[9].to_s.casecmp('yes').zero?
     end
 
     def actor_name
