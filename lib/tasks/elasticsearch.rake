@@ -11,6 +11,9 @@ namespace :elasticsearch do
         klass.__elasticsearch__.create_index! force: true
       end
     end
+
+    desc 'Refresh and reimport all indices'
+    task refresh_and_reimport: ['indices:refresh', 'import']
   end
 
   desc 'Imports all Searchable models'
