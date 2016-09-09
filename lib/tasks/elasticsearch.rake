@@ -1,8 +1,15 @@
 namespace :elasticsearch do
-  desc 'Creates indices for each class that includes Searchable'
-  task create_indices: :environment do
-    searchables.each do |klass|
-      klass.__elasticsearch__.create_index!
+  namespace :indices do
+    desc 'Creates indices for each class that includes Searchable'
+    task create: :environment do
+      searchables.each { |klass| klass.__elasticsearch__.create_index! }
+    end
+
+    desc 'Refresh all indices (e.g. when you change an indexing setting)'
+    task refresh: :environment do
+      searchables.each do |klass|
+        klass.__elasticsearch__.create_index! force: true
+      end
     end
   end
 
