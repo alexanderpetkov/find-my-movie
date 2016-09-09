@@ -8,4 +8,10 @@ class Movie < ApplicationRecord
 
   has_many :genres, through: :genre_belongings
   has_many :genre_belongings
+
+  settings index: { number_of_shards: 1 } do
+    mappings dynamic: 'false' do
+      indexes :title, analyzer: 'english', index_options: 'offsets'
+    end
+  end
 end
