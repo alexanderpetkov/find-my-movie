@@ -8,7 +8,7 @@ module CSVParse
     def parse
       CSV.foreach(MOVIES_PATH, CSV_OPTS) do |row|
         next if $INPUT_LINE_NUMBER < 3
-        Rails.logger "Parsing row ##{$INPUT_LINE_NUMBER}"
+        Rails.logger.info "Parsing row ##{$INPUT_LINE_NUMBER}"
 
         @row = row
 
