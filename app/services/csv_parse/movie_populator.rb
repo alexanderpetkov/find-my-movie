@@ -47,7 +47,7 @@ module CSVParse
     end
 
     def award?
-      @row[9].to_s.casecmp('yes').zero?
+      @row[8].to_s.casecmp('yes').zero?
     end
 
     def actor_name
