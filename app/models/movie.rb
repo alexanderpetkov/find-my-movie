@@ -14,4 +14,12 @@ class Movie < ApplicationRecord
       indexes :title, analyzer: 'english', index_options: 'offsets'
     end
   end
+
+  def as_indexed_json(options={})
+    self.as_json(
+      include: { genres: { only: :name},
+                 actors:    { only: :name },
+                 director:   { only: :name }
+               })
+  end
 end
