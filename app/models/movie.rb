@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   include Searchable
+  include Autocompletable
 
   belongs_to :director, optional: true
 
@@ -9,10 +10,11 @@ class Movie < ApplicationRecord
   has_many :genres, through: :genre_belongings
   has_many :genre_belongings
 
+  autocomplete :title
+
   settings index: { number_of_shards: 1 } do
     mappings dynamic: false do
       indexes :title, analyzer: 'english', index_options: 'offsets'
-      indexes :title_suggest, type: 'completion', payloads: true
     end
   end
 
