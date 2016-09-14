@@ -27,14 +27,4 @@ class Movie < ApplicationRecord
       }
     ).merge autocomplete_json
   end
-
-  def autocomplete_json
-    {
-      title_suggest: {
-        input:  title,
-        output: title,
-        payload: { url: "/movies/#{id}" }
-      }
-    }
-  end
 end
