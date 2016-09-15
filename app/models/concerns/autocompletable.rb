@@ -5,7 +5,7 @@ module Autocompletable
 
   included do
     def autocomplete_json
-      self.class.autocomplete_json(self.id)
+      self.class.autocomplete_json(id)
     end
   end
 
@@ -31,23 +31,28 @@ module Autocompletable
     end
 
     def suggest(text, size = nil)
-      units = self.to_s.downcase.pluralize
-      completion = {
+      @completion = {
         field: "#{@field}_suggest",
         size: size || DEFAULT_SUGGESTIONS_COUNT
       }
 
-      query = {
-        index: self.index_name,
+      __elasticsearch__.client.suggest(query(text))
+    end
+
+    private
+
+    def query(text)
+      units = to_s.downcase.pluralize
+
+      {
+        index: index_name,
         body: {
-          "#{units}" => {
+          units.to_s => {
             text: text,
-            completion: completion
+            completion: @completion
           }
         }
       }
-
-      self.__elasticsearch__.client.suggest(query)
     end
   end
 end
