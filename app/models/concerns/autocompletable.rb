@@ -19,10 +19,12 @@ module Autocompletable
     end
 
     def autocomplete_json(id)
+      suggested = find(id).send(@field)
+
       {
         "#{@field}_suggest" => {
-          input:  @field,
-          output: @field,
+          input: suggested,
+          output: suggested,
           payload: { url: "/movies/#{id}" }
         }
       }
@@ -36,6 +38,7 @@ module Autocompletable
       }
 
       query = {
+        index: self.index_name,
         body: {
           "#{units}" => {
             text: text,
@@ -44,7 +47,7 @@ module Autocompletable
         }
       }
 
-      self.__elasticsearch__.client.suggest(self.index_name, query)
+      self.__elasticsearch__.client.suggest(query)
     end
   end
 end
