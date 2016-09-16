@@ -1,0 +1,8 @@
+<% if @movie.present? %>
+  <%= image_tag "movie.jpg" %>
+  <h3><%= @movie.title %></h3>
+
+
+<% else %>
+  <div>This movie does not exist</div>
+<% end %>
