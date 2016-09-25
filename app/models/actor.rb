@@ -1,5 +1,6 @@
 class Actor < ApplicationRecord
   include Searchable
+  include Autocompletable
 
   enum gender: [:female, :male]
 
