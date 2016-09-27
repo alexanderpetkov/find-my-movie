@@ -12,6 +12,6 @@ class SearchController < ApplicationController
   private
 
   def sanitize
-    @query = params.fetch(:q, '').gsub(/[^0-9a-z ]/i, '')
+    @query = params.require(:q).gsub(/[^0-9a-z ]/i, '')
   end
 end
