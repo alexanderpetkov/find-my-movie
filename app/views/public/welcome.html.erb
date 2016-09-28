@@ -4,7 +4,7 @@
 
 <%= form_tag("/search/movies", method: "get", remote: true) do %>
   <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
+  <%= text_field_tag(:q, '', placeholder: 'title', class: 'movie-input') %>
   <%= submit_tag("Search") %>
 <% end %>
 
