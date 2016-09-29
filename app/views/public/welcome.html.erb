@@ -1,15 +1,17 @@
-<h1> Welcome to Find My Movie </h1>
+<div class="text-center col-lg-6">
+  <h1 class="welcome text-center"> Welcome to Find My Movie </h1>
 
-<h3> Enter the movie you want to search: </h3>
+  <h3> Enter the movie you want to search: </h3>
 
-<%= form_tag("/search/movies", method: "get", remote: true) do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q, '', placeholder: 'title', class: 'movie-input') %>
-  <%= submit_tag("Search") %>
-<% end %>
+  <%= form_tag("/search/movies", method: "get", remote: true) do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q, '', placeholder: 'title', class: 'movie-input form-control') %>
+    <%= submit_tag("Search") %>
+  <% end %>
 
-<div class="suggestions">
-</div>
+  <div class="suggestions">
+  </div>
 
-<div class="movies">
+  <div class="movies">
+  </div>
 </div>
