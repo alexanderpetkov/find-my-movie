@@ -6,3 +6,21 @@ body {
 .welcome {
   font-weight: bold;
 }
+
+.search-form {
+    margin: auto;
+    width: 50%;
+}
+
+.form-label {
+    font-size: 15px;
+}
+
+.input-container {
+    display: inline;
+}
+
+.form-input {
+    min-width: 350px;
+    margin: 0 5px;
+}
