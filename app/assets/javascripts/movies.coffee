@@ -6,3 +6,7 @@ $ ->
 
   $(window).click ->
     $('.suggestions').hide()
+
+  $('.movie-input').click (e) ->
+    e.stopPropagation();
+    $('.suggestions').show()
