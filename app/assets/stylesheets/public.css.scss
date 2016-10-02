@@ -12,21 +12,44 @@ body {
 }
 
 .search-form {
-    margin: auto;
-    width: 50%;
-    padding: 20px;
+  margin: auto;
+  width: 50%;
+  padding: 20px;
 }
 
 .form-label {
-    font-size: 15px;
-    margin: auto;
+  font-size: 15px;
+  margin: auto;
 }
 
 .input-container {
-    display: inline;
+  display: inline;
+  margin: 0 10px;
 }
 
 .form-input {
-    min-width: 350px;
-    margin: 0 10px;
+  min-width: 350px;
+}
+
+.suggestions {
+  position: absolute;
+  min-width: 350px;
+  text-align: left;
+  margin-top: -1px;
+
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.suggestion {
+  padding: 6px;
+}
+
+.suggestion:hover {
+  background: lightgrey;
+  cursor: pointer;
+}
+
+.suggestion:not(:last-child) {
+  border-bottom: 1px solid #ccc;
 }
