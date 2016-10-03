@@ -10,3 +10,6 @@ $ ->
   $('.movie-input').click (e) ->
     e.stopPropagation();
     $('.suggestions').show()
+
+  @go_to = (location) ->
+   window.location = location
