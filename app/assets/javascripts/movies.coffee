@@ -10,4 +10,3 @@ $ ->
   $('.movie-input').click (e) ->
     e.stopPropagation();
     $('.suggestions').show()
-
