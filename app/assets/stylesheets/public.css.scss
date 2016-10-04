@@ -44,10 +44,13 @@ body {
 }
 
 .suggestion {
+  display: block;
   padding: 6px;
+  color: black;
 }
 
 .suggestion:hover {
+  text-decoration: none;
   background: lightgrey;
   cursor: pointer;
 }
