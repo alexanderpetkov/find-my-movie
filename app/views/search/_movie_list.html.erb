@@ -1,3 +1,6 @@
 <% @movies.each do |movie| %>
-  <div><%= movie.title %></div>
+  <div class="movie-results">
+    <%= image_tag('movie.jpg', class: 'list-image') %>
+    <div class="movie"> <%= movie.title %> </div>
+  </div>
 <% end %>

@@ -35,26 +35,45 @@ body {
   position: absolute;
   min-width: 350px;
   text-align: left;
-  margin-top: -1px;
 
   border: 1px solid #ccc;
   border-top: none;
+  border-bottom: none;
 
   background: white;
 }
 
 .suggestion {
+  font-size: 12px;
   display: block;
   padding: 6px;
   color: black;
+  border-bottom: 1px solid #ccc;
 }
 
 .suggestion:hover {
+  color: black;
   text-decoration: none;
   background: lightgrey;
   cursor: pointer;
 }
 
-.suggestion:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+.movies {
+  width: 75%;
+  margin: auto;
+  text-align: left;
+}
+
+.movie {
+  font-size: 16px;
+  display: inline;
+  width: 100%;
+}
+
+.list-image {
+  width: 50px;
+}
+
+.movie-results {
+  padding: 10px;
 }
