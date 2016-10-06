@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: find-my-movie_development
+  username: postgres
+  password:
+  min_messages: warning
+
+test:
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: find-my-movie_test
+  username: postgres
+  password:
+  min_messages: warning
