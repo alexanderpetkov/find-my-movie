@@ -1,5 +1,7 @@
 # Find my Movie
 
+[![Build Status](https://travis-ci.org/radmanovi4/find-my-movie.svg?branch=master)](https://travis-ci.org/radmanovi4/find-my-movie)
+
 This is a "Hello world" Rails + Elasticsearch project.
 
 It is meant to serve as a starting point for anyone aiming to get a first hands-on experience with Rails and Elasticsearch. It will be expanded with more compelx functionality in the future.
