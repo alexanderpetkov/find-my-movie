@@ -1,5 +1,7 @@
 language: ruby
 rvm:
   - 2.2.2
+script:
+  - bundle exec rake --trace db:create db:migrate
 before_script:
   - cp config/database.yml.travis config/database.yml
