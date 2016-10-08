@@ -1,6 +1,8 @@
 # Find my Movie
 
-[![Build Status](https://travis-ci.org/radmanovi4/find-my-movie.svg?branch=master)](https://travis-ci.org/radmanovi4/find-my-movie) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Build Status](https://travis-ci.org/radmanovi4/find-my-movie.svg?branch=master)](https://travis-ci.org/radmanovi4/find-my-movie) [![Code Climate](https://codeclimate.com/github/radmanovi4/find-my-movie/badges/gpa.svg)](https://codeclimate.com/github/radmanovi4/find-my-movie)
+ [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
 
 This is a "Hello world" Rails + Elasticsearch project.
 
