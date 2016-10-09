@@ -25,7 +25,7 @@ module Autocompletable
         "#{@field}_suggest" => {
           input: suggested,
           output: suggested,
-          payload: { url: "/movies/#{id}" }
+          payload: { url: "/#{units}/#{id}" }
         }
       }
     end
@@ -42,8 +42,6 @@ module Autocompletable
     private
 
     def query(text)
-      units = to_s.downcase.pluralize
-
       {
         index: index_name,
         body: {
@@ -53,6 +51,10 @@ module Autocompletable
           }
         }
       }
+    end
+
+    def units
+      to_s.downcase.pluralize
     end
   end
 end
