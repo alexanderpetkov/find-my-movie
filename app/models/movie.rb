@@ -12,7 +12,7 @@ class Movie < ApplicationRecord
 
   autocomplete :title
 
-  settings index: { number_of_shards: 1 } do
+  settings index: { number_of_shards: 3 } do
     mappings dynamic: false do
       indexes :title, analyzer: 'english', index_options: 'offsets'
     end
