@@ -8,5 +8,5 @@ document.addEventListener 'turbolinks:load', ->
     $('.suggestions').hide()
 
   $('.movie-input').click (e) ->
-    e.stopPropagation();
+    e.stopPropagation()
     $('.suggestions').show()

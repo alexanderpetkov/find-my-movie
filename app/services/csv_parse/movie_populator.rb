@@ -39,7 +39,9 @@ module CSVParse
     end
 
     def director
-      Director.find_or_create_by(name: parse_name(@row[6]))
+      name = parse_name(@row[6]).strip
+
+      Director.find_or_create_by(name: name)
     end
 
     def length
@@ -51,7 +53,7 @@ module CSVParse
     end
 
     def actor_name
-      parse_name(@row[4])
+      parse_name(@row[4]).strip
     end
 
     def actress_name

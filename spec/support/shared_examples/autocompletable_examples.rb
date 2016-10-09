@@ -2,7 +2,7 @@ RSpec.shared_examples :autocompletable do |field|
   describe 'autocompletion' do
     let(:model) { described_class }
 
-    context 'elasticsearch mapping' do
+    describe 'elasticsearch mapping' do
       let(:mapping) { model.mapping }
 
       it 'is valid' do
@@ -21,7 +21,7 @@ RSpec.shared_examples :autocompletable do |field|
           expect(props).to include(suggest_prop)
         end
 
-        it 'suggest property is completion typed' do
+        it 'suggest property is of completion type' do
           suggested = props[suggest_prop]
 
           expect(suggested).to include(type: 'completion')
