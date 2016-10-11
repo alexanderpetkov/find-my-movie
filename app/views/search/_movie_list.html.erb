@@ -4,3 +4,7 @@
     <div class="movie"> <%= movie.title %> </div>
   </div>
 <% end %>
+
+<% if @movies.present? %>
+  <button class="load-more btn btn-info text-center">Load more</button>
+<% end %>
