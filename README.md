@@ -1,6 +1,6 @@
 # Find my Movie
 
-[![Build Status](https://travis-ci.org/radmanovi4/find-my-movie.svg?branch=master)](https://travis-ci.org/radmanovi4/find-my-movie) [![Code Climate](https://codeclimate.com/github/radmanovi4/find-my-movie/badges/gpa.svg)](https://codeclimate.com/github/radmanovi4/find-my-movie)
+[![Build Status](https://travis-ci.org/alexanderpetkov/find-my-movie.svg?branch=master)](https://travis-ci.org/alexanderpetkov/find-my-movie) [![Code Climate](https://codeclimate.com/github/alexanderpetkov/find-my-movie/badges/gpa.svg)](https://codeclimate.com/github/alexanderpetkov/find-my-movie)
  [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 
