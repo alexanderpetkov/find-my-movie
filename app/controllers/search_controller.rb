@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  before_action :sanitize, only: [:movies, :movie_suggestions]
+  before_action :parse_params, only: [:movies, :movie_suggestions]
 
   def movies
     @movies = Movie.search(@query).records
@@ -19,7 +19,7 @@ class SearchController < ApplicationController
 
   private
 
-  def sanitize
+  def parse_params
     @query = params.require(:q).gsub(/[^0-9a-z ]/i, '')
   end
 end

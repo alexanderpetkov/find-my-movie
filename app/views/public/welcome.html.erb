@@ -4,15 +4,15 @@
   <h3> Which movie are you looking for? </h3>
 
   <div class="search-form">
-    <%= form_tag("/search/movies", method: "get", remote: true, class: "form-inline") do %>
-      <%= label_tag(:q, "Basic search:", class: "form-label") %>
+    <%= form_tag('/search/movies', method: 'get', remote: true, class: 'form-inline') do %>
+      <%= label_tag(:q, 'Basic search:', class: 'form-label') %>
 
       <div class="input-container">
-        <%= text_field_tag(:q, '', placeholder: "title", class: "movie-input form-input form-control") %>
+        <%= text_field_tag(:q, '', placeholder: 'title', class: 'movie-input form-input form-control') %>
         <div class="suggestions"></div>
       </div>
 
-      <%= submit_tag("Go", class: "btn btn-success") %>
+      <%= submit_tag('Go', class: 'btn btn-success') %>
     <% end %>
   </div>
 
