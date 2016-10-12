@@ -1,1 +1,7 @@
-$(".movies").html("<%= raw escape_javascript(render(partial: 'movie_list')) %>")
+if (typeof($movies) === 'undefined') {
+  $(".movies").html("<%= raw escape_javascript(render(partial: 'movie_list')) %>")
+  $movies = <%= @movies.to_json.html_safe %>;
+} else {
+  $(".movies").append("<%= raw escape_javascript(render(partial: 'movie_list')) %>")
+  $movies = $movies.concat(<%= @movies.to_json.html_safe %>);
+}
