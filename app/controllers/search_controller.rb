@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   MOVIE_COUNT = 10
 
   def movies
-    @movies = Movie.search(@query, size: MOVIE_COUNT, from: @from).records
+    @movies = Movie.search(@query, size: MOVIE_COUNT, from: @offset).records
     @more_left = @movies.size >= MOVIE_COUNT
 
     respond_to do |format|
@@ -23,7 +23,7 @@ class SearchController < ApplicationController
   private
 
   def parse_params
-    @query = params.require(:q).gsub(/[^0-9a-z ]/i, '')
-    @from  = params.permit(:from).fetch(:from, 0)
+    @query  = params.require(:q).gsub(/[^0-9a-z ]/i, '')
+    @offset = params.permit(:offset).fetch(:offset, 0)
   end
 end
