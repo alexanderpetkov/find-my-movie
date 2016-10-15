@@ -5,8 +5,8 @@ class SearchController < ApplicationController
 
   def movies
     @movies = Movie.search(@query, size: MOVIE_COUNT, from: @offset).records
-    @more_left = @movies.size >= MOVIE_COUNT
 
+    @more_left = @movies.size >= MOVIE_COUNT
     @loading_more = @offset.positive?
 
     respond_to do |format|
