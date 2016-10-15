@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'webmock'
 end
 
 group :development do
