@@ -1,7 +1,15 @@
-if (typeof($movies) === 'undefined') {
+if (<%= !@loading_more %>) {
   $(".movies").html("<%= raw escape_javascript(render(partial: 'movie_list')) %>")
   $movies = <%= @movies.to_json.html_safe %>;
+
 } else {
   $(".movies").append("<%= raw escape_javascript(render(partial: 'movie_list')) %>")
   $movies = $movies.concat(<%= @movies.to_json.html_safe %>);
+}
+
+var more = <%= @more_left.to_json.html_safe %>
+if (more) {
+  $('.load-more').show()
+} else {
+  $('.load-more').hide()
 }

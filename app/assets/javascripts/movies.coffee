@@ -15,3 +15,7 @@ document.addEventListener 'turbolinks:load', ->
   $('.movie-input').click (e) ->
     e.stopPropagation()
     $('.suggestions').show()
+
+  $('.load-more').click (e) ->
+    q = $('.movie-input').val()
+    $.get 'search/movies', {q: q, offset: $movies.length}
