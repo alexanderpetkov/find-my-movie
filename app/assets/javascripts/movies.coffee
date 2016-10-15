@@ -1,8 +1,13 @@
 document.addEventListener 'turbolinks:load', ->
   $('.movie-input').keyup (e) ->
-    q = $(this).val()
-    $.get 'search/movie_suggestions', {q: q}
-    $('.suggestions').show()
+    if e.keyCode != 13
+      q = $(this).val()
+
+      if q.length == 0
+        $('.suggestions').hide()
+      else
+        $.get 'search/movie_suggestions', {q: q}
+        $('.suggestions').show()
 
   $(window).click ->
     $('.suggestions').hide()
