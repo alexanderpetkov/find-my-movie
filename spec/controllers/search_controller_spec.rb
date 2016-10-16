@@ -28,7 +28,7 @@ RSpec.describe SearchController, type: :controller do
       it 'is stored as fixnum' do
         get_xhr :movies, q: 'sth', offset: 10
 
-        expect(assigns(:offset)).to be_kind_of Fixnum
+        expect(assigns(:offset)).to be_kind_of Integer
       end
     end
 
