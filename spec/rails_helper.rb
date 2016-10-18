@@ -7,6 +7,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'webmock/rspec'
 
+require 'rake'
+require 'elasticsearch/extensions/test/cluster'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -21,6 +24,8 @@ require 'webmock/rspec'
 # of increasing the boot-up time by auto-requiring all files in the support
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -59,4 +64,26 @@ RSpec.configure do |config|
 
   config.include Support::ControllerHelper, type: :controller
   config.include Support::StubHelper, type: :controller
+
+  config.before :all, elasticsearch: true do
+    Elasticsearch::Extensions::Test::Cluster.start unless Elasticsearch::Extensions::Test::Cluster.running?
+
+    rake = Rake::Application.new
+    Rake.application = rake
+    rake.init
+    rake.load_rakefile
+
+    rake['elasticsearch:indices:create'].invoke
+  end
+
+  config.after :suite do
+    rake = Rake::Application.new
+    Rake.application = rake
+    rake.init
+    rake.load_rakefile
+
+    rake['elasticsearch:indices:delete'].invoke
+
+    Elasticsearch::Extensions::Test::Cluster.stop if Elasticsearch::Extensions::Test::Cluster.running?
+  end
 end

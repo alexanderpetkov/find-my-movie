@@ -1,8 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SearchController, type: :controller do
-  before(:each) { stub_elasticsearch }
-
+RSpec.describe SearchController, elasticsearch: true, type: :controller do
   describe '#movies' do
     context 'parsing query' do
       it 'requires :q parameter' do
@@ -66,7 +64,7 @@ RSpec.describe SearchController, type: :controller do
 
         get_xhr :movies, q: 'sth'
 
-        expect(assigns(@movies)).to eq []
+        expect(assigns(:movies)).to eq []
       end
     end
   end
