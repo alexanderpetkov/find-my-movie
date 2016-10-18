@@ -12,6 +12,11 @@ namespace :elasticsearch do
       end
     end
 
+    desc 'Delete all indices'
+    task delete: :environment do
+      searchables.each { |klass| klass.__elasticsearch__.delete_index! }
+    end
+
     desc 'Refresh and reimport all indices'
     task refresh_and_reimport: ['indices:refresh', 'import']
   end
