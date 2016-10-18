@@ -8,3 +8,4 @@ script:
   - RAILS_ENV=test bundle exec rspec
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - export PATH="$/usr/share/elasticsearch/bin/:$PATH"
