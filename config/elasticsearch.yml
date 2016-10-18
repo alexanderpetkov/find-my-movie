@@ -1,0 +1,11 @@
+development:
+  client:
+    host: 'http://localhost:9200'
+
+test:
+  client:
+    host: 'http://localhost:9250'
+  cluster:
+    port: 9250
+    nodes: 1
+    timeout: 120
