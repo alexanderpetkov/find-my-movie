@@ -6,6 +6,7 @@ abort('The Rails environment is in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
 require 'webmock/rspec'
+require 'support/factory_girl'
 
 require 'rake'
 require 'elasticsearch/extensions/test/cluster'
