@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'webmock'
   gem 'elasticsearch-extensions'
+  gem 'factory_girl_rails'
 end
 
 group :development do
