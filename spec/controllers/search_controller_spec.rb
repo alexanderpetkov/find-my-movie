@@ -58,13 +58,70 @@ RSpec.describe SearchController, elasticsearch: true, type: :controller do
       end
     end
 
-    context '@movie' do
-      it 'assigns result records in @movie' do
-        allow(Movie).to receive(:search).and_return(double(records: []))
+    context 'setting variables' do
+      let(:search_result) { double(records: movies_found) }
+
+      before(:each) do
+        allow(Movie).to receive(:search).and_return(search_result)
 
         get_xhr :movies, q: 'sth'
+      end
 
-        expect(assigns(:movies)).to eq []
+      context '@movie' do
+        let(:movies_found) { create_n_movies(5) }
+
+        it 'assigns result records in @movie' do
+          expect(assigns(:movies)).to eq movies_found
+        end
+      end
+
+      context '@more_left' do
+        context 'with < 10 results' do
+          let(:movies_found) { create_n_movies(9) }
+
+          it { expect(assigns(:more_left)).to be_falsey }
+        end
+
+        context 'with 10 results' do
+          let(:movies_found) { create_n_movies(10) }
+
+          it { expect(assigns(:more_left)).to be_falsey }
+        end
+
+        context 'with > 10 results' do
+          let(:movies_found) { create_n_movies(11) }
+
+          it { expect(assigns(:more_left)).to be_truthy }
+        end
+      end
+
+      private
+
+      def create_n_movies(n)
+        1.upto(n).map { create(:movie) }
+      end
+    end
+  end
+
+  describe '#movie_suggestions' do
+    let(:suggestions) { %w(one two three) }
+    let(:sample_result) do
+      {
+        'movies' => [{ 'options' => suggestions }]
+      }
+    end
+
+    before(:each) do
+      allow(Movie).to receive(:suggest).and_return(sample_result)
+
+      get_xhr :movie_suggestions, q: 'sth'
+    end
+
+    context 'setting variables' do
+      context '@suggestions' do
+        it 'assigns suggestions to @suggestions' do
+          expect(assigns(:suggestions)).to eq suggestions
+        end
       end
     end
   end
