@@ -1,3 +1,5 @@
+require 'elasticsearch/dsl'
+
 module Searchable
   extend ActiveSupport::Concern
 

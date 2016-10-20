@@ -27,4 +27,14 @@ class Movie < ApplicationRecord
       }
     ).merge autocomplete_json
   end
+
+  def self.search_by_match(text)
+    q = Elasticsearch::DSL::Search.search do
+      query do
+        match title: text
+      end
+    end
+
+    __elasticsearch__.search(q)
+  end
 end
