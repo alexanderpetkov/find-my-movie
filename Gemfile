@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'elasticsearch-dsl'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
