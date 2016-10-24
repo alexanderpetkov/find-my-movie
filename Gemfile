@@ -61,6 +61,9 @@ end
 
 group :test do
   gem 'cucumber-rails', require: false
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'site_prism'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
