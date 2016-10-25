@@ -38,12 +38,25 @@ class Movie < ApplicationRecord
     __elasticsearch__.search(q)
   end
 
-  def self.search_by_phrase_match(text)
+  def self.search_by_phrase(text)
     q = Elasticsearch::DSL::Search.search do
       query do
         match :title do
           query text
           type :phrase
+        end
+      end
+    end
+
+    __elasticsearch__.search(q)
+  end
+
+  def self.search_by_phrase_prefix(text)
+    q = Elasticsearch::DSL::Search.search do
+      query do
+        match :title do
+          query text
+          type :phrase_prefix
         end
       end
     end
