@@ -39,7 +39,7 @@ module CSVParse
     end
 
     def director
-      name = parse_name(@row[6]).strip
+      name = parse_name(@row[6]).to_s.strip
 
       Director.find_or_create_by(name: name)
     end
@@ -53,7 +53,7 @@ module CSVParse
     end
 
     def actor_name
-      parse_name(@row[4]).strip
+      parse_name(@row[4]).to_s.strip
     end
 
     def actress_name
